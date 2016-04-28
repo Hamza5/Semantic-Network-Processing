@@ -2,19 +2,24 @@
 # -*- coding: utf-8 -*-
 import sys
 
-graph={}
-print "\nVeuillez saisir vos relations\nLa relation is_a doit être écrite avec cet orthographe.\nTerminez avec une ligne vide :\n"
+graph = {}
+exceptions = {}
+print "Veuillez saisir vos relations.\nLa relation is_a doit être écrite avec cet orthographe.\nLes relations des exceptions doivent être précédées par 'non'.\nTerminez avec une ligne vide :\n"
 while True :
-	relation = raw_input("> ")
-	if not relation :
-		break
-	relationNodes = relation.split(" ")
-	if len(relationNodes) != 3 :
-		print "Syntax erronée. Re-écrivez votre phrase :"
-		continue
+    relation = raw_input("> ")
+    if not relation :
+        break
+    relationNodes = relation.split(" ")
+    if len(relationNodes) == 3  :
 	if relationNodes[1] not in graph : # If the node doesn't exist
-		graph[relationNodes[1]] = set() # Set of tuples, each tuple contains 2 nodes
+            graph[relationNodes[1]] = set() # Set of tuples, each tuple contains 2 nodes
 	graph[relationNodes[1]].add((relationNodes[0], relationNodes[2]))
+    elif len(relationNodes) == 4 and relationNodes[1] == "non": # Exception
+        if relationNodes[2] not in exceptions :
+            exceptions[relationNodes[2]] = set()
+        exceptions[relationNodes[2]].add((relationNodes[0], relationNodes[3]))
+    else :
+        print "Syntax erronée. Re-écrivez votre phrase !"
 
 if not graph : # No graph was given
     sys.exit()
@@ -23,7 +28,7 @@ print "Graphe :"
 print graph
 print "\n"
 
-question = raw_input("Saisir votre question en cette syntax : amine mange soterelle\n> ")
+question = raw_input("Introduisez votre question sous la syntax : <sujet> <relation> <objet>\n> ")
 question = question.split(" ")
 
 m1 = set()
@@ -43,8 +48,7 @@ while dontstop:
 				temp.add(tupl[0])
 				dontstop = True
         m1.update(temp)
-print "\n"
-print "M1 propagé"
+print "\nM1 propagé"
 print m1
 
 dontstop = True
@@ -59,12 +63,12 @@ while dontstop:
         m2.update(temp)
 print "M2 propagé"
 print m2
-print "\n"
+print ""
 
 solutions = set()
 for a in m1 :
 	for b in m2 :
-		if (a,b) in graph[question[1]]:
+		if (a,b) in graph[question[1]] and (a,b) not in exceptions[question[1]]:
 			solutions.add((a,b))
 
 if not solutions :
