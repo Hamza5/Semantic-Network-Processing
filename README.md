@@ -1,13 +1,13 @@
-This is a simple implementation of the propagation-based algorithme for question answering in sementic networks.
+This is a simple implementation of the propagation-based algorithm for question answering in sementic networks.
 
 
 We'll take this example to illustrate all the process from the creation of the graph to the question answering.
 
 ![Graph](https://raw.githubusercontent.com/SamyMe/Semantic-Network-Processing/master/graph.png)
 
-The graph is constructed entering a serie of statements.
+The graph is constructed by giving a serie of statements.
 
-For our example, the statements would be as follows:
+For our example, the statements would be as follows :
 - Asian is_a Human
 - European is_a Human
 - Chinese is_a Asian
@@ -21,7 +21,7 @@ For our example, the statements would be as follows:
 It is very important to keep the exact same spelling for relations and actors.
 Also, *is_a* needs to be in this exact spelling.
 
-This will creat the following graph structur:
+This will create the following graph structure :
 
 ```python
 {'is_a': [('Asian', 'Human'), ('European', 'Human'), ('Chinese', 'Asian'), ('Japanese', 'Asian'), ('French', 'European'), ('Grasshopper', 'Insect')], 'eat': [('French', 'snail'), ('Japanese', 'rice'), ('Chinese', 'Grasshopper')]}

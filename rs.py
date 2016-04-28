@@ -2,16 +2,16 @@
 
 relation="a"
 graph={}
-print "\nEntrez vos relations \nVeuillez entrer la relation <<is_a>> avec cet orthograph. \nTerminez avec une ligne vide:\n"
+print "\nSaisir vos relations\nVeuillez saisir la relation is_a avec cet orthographe.\nTerminez avec une ligne vide :\n"
 while len(relation) !=0:
-	relation = raw_input("")
+	relation = raw_input("> ")
 	if len(relation)==0:
 		break
 
 	relation=relation.split(" ")
 
 	if len(relation)!=3:
-		print "Syntax erronée. Re-ecrivez votre phrase:"
+		print "Syntax erronée. Re-écrivez votre phrase :"
 		continue
 
 	if not relation[1] in graph:
@@ -22,11 +22,11 @@ while len(relation) !=0:
 	#relation='_'.join(relation)
 	graph[relation[1]].append((relation[0],relation[2]))
 
-print "Graph construit:"
+print "Graphe :"
 print graph
 print "\n"
 
-question= raw_input("Entrez votre question avec la syntax suivante (sans les '<,>'):\n< amine mange soterelle ? >\n") #<qui mange amine ?> \n2- <amine mange qui ?>\n3- <amine mange sautrelle ?>")
+question= raw_input("Saisir votre question avec la syntax suivante (sans les '<,>'):\n< amine mange soterelle ? >\n") #<qui mange amine ?> \n2- <amine mange qui ?>\n3- <amine mange sautrelle ?>")
 question=question.split(" ")
 
 m1=[]
@@ -68,9 +68,9 @@ for a in m1:
 			solution.append((a,b))
 
 if len(solution)==0:
-	print "Il n y a pas de solution"
+	print "Il n y a pas de solutions"
 else:
-	print "Solutions:"
+	print "Solutions :"
 	for (a,b) in solution:
 		print a+" "+question[1]+" "+b
 
