@@ -1,8 +1,9 @@
+#!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
 relation="a"
 graph={}
-print "\nSaisir vos relations\nVeuillez saisir la relation is_a avec cet orthographe.\nTerminez avec une ligne vide :\n"
+print "\nVeuillez saisir vos relations\nLa relation is_a doit être écrite avec cet orthographe.\nTerminez avec une ligne vide :\n"
 while len(relation) !=0:
 	relation = raw_input("> ")
 	if len(relation)==0:
