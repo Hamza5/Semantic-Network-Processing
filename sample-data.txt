@@ -1,0 +1,16 @@
+Marocain is_a Homme
+Asiatique is_a Homme
+Marocain mange Couscous                                                                                                                      
+Vietnamien is_a Asiatique
+Chinois is_a Asiatique
+Japonais is_a Asiatique
+Chinois mange Ris
+Japonais mange Poisson
+Caniche is_a Chien
+Vietnamien mange Caniche
+Chien is_a Animal
+Poisson is_a Animal
+Vietnamien non mange Berger_allemand
+Chat is_a Mammifère
+Mammifère is_a Animal
+Berger_allemand is_a Chien
